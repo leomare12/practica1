@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ListaLigada.ListaLigadaSimpleConCabeza;
-import Matriz.SparseMatrix;
+import Matriz.matrizListaLigada;
 import Polinomios.Termino;
 import Polinomios.Nodo;
 
@@ -44,7 +44,7 @@ public class App {
                         System.out.println("Ingrese el exponente para el término " + (i + 1) + ": (" + var + "t ^ ?)");
                         formula[i] = teclado.nextInt();
 
-                        strFormula = strFormula + var + "t^" + formula[i] + " ";
+                        strFormula = strFormula + var + "t^" + formula[i] + " +";
                     }
 
                     System.out.println("La fórmula creada es " + strFormula);
@@ -94,7 +94,7 @@ public class App {
                         } while (addTermino == JOptionPane.YES_OPTION);
 
                         // Crear Matriz
-                        SparseMatrix m = new SparseMatrix(listaPolinomios.size(), 3);
+                      matrizListaLigada m = new matrizListaLigada(listaPolinomios.size(), 3);
 
                         for (int i = 0; i < listaPolinomios.size(); i++) {
                             p = listaPolinomios.get(i);
