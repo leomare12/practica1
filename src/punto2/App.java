@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import ListaLigada.ListaLigadaSimpleConCabeza;
 import Matriz.MatrizDispersaListaLigadaForma1;
+import Matriz.SparseMatrix;
 import Polinomios.Termino;
 import Polinomios.Nodo;
 
@@ -45,10 +46,10 @@ public class App {
                         formula[i] = teclado.nextInt();
 
                         strFormula = strFormula + var + "t^" + formula[i] + " ";
-                        if (i == 2)
-                            System.out.println("La fórmula creada es " + strFormula);
                     }
 
+                    System.out.println("La fórmula creada es " + strFormula);
+                    
                     break;
 
                 case '2':
@@ -88,24 +89,29 @@ public class App {
                             }
 
                             listaPolinomios.add(polinomio);
-                            addTermino = JOptionPane.showConfirmDialog(null, "Desea continuar agregando términos?",
+                            addTermino = JOptionPane.showConfirmDialog(null, "Desea continuar agregando Polinomios?",
                                     "Question", JOptionPane.YES_NO_OPTION);
 
                         } while (addTermino == JOptionPane.YES_OPTION);
 
                         // Crear Matriz
-                        MatrizDispersaListaLigadaForma1 matriz = new MatrizDispersaListaLigadaForma1();
-                        matriz.generarCabezas(listaPolinomios.size(), 3);
+                       // MatrizDispersaListaLigadaForma1 matriz = new MatrizDispersaListaLigadaForma1();
+                        //matriz.generarCabezas(listaPolinomios.size(), 3);
+                        SparseMatrix m = new SparseMatrix(1,3);
+                   
 
                         for (int i = 0; i < listaPolinomios.size(); i++) {
                             p = listaPolinomios.get(i);
                             for (int j = 0; j < 3; j++) {
-                                matriz.insertar(i, j, p.getCoeficiente(formula[j]));
+                        //        matriz.insertar(i, j, p.getCoeficiente(formula[j]));
                                 System.out.println(p.getCoeficiente(formula[j]) + "\t");
+                                m.add(Integer.parseInt(p.getCoeficiente(formula[j])),i,j);
                             }
                         }
+                        System.out.println(m);
 
-                        matriz.mostrar();
+
+                        //  matriz.mostrar();
 
                     } else {
                         JOptionPane.showMessageDialog(null,
@@ -125,4 +131,5 @@ public class App {
         } while (opcion < '1' || opcion > '6');
         return opcion;
     }
+
 }
