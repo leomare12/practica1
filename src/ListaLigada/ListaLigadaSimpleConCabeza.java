@@ -136,7 +136,7 @@ public class ListaLigadaSimpleConCabeza {
         return polC;
     }
 
-    public int getCoeficiente(int exponente) {
+    public double getCoeficiente(int exponente) {
         // Variables para los recorridos en polinomios a,b y c
         Nodo prA = this.getCabeza().getLiga();
 

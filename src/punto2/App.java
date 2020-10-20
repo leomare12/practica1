@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ListaLigada.ListaLigadaSimpleConCabeza;
-import Matriz.MatrizDispersaListaLigadaForma1;
 import Matriz.SparseMatrix;
 import Polinomios.Termino;
 import Polinomios.Nodo;
@@ -49,7 +48,7 @@ public class App {
                     }
 
                     System.out.println("La fórmula creada es " + strFormula);
-                    
+
                     break;
 
                 case '2':
@@ -95,23 +94,17 @@ public class App {
                         } while (addTermino == JOptionPane.YES_OPTION);
 
                         // Crear Matriz
-                       // MatrizDispersaListaLigadaForma1 matriz = new MatrizDispersaListaLigadaForma1();
-                        //matriz.generarCabezas(listaPolinomios.size(), 3);
-                        SparseMatrix m = new SparseMatrix(1,3);
-                   
+                        SparseMatrix m = new SparseMatrix(listaPolinomios.size(), 3);
 
                         for (int i = 0; i < listaPolinomios.size(); i++) {
                             p = listaPolinomios.get(i);
                             for (int j = 0; j < 3; j++) {
-                        //        matriz.insertar(i, j, p.getCoeficiente(formula[j]));
-                                System.out.println(p.getCoeficiente(formula[j]) + "\t");
-                                m.add(Integer.parseInt(p.getCoeficiente(formula[j])),i,j);
+                                // System.out.println(p.getCoeficiente(formula[j]) + "\t");
+                                m.add((int) p.getCoeficiente(formula[j]), i, j);
                             }
                         }
+
                         System.out.println(m);
-
-
-                        //  matriz.mostrar();
 
                     } else {
                         JOptionPane.showMessageDialog(null,
